@@ -341,12 +341,12 @@ docker compose run --rm eval --set l05_dialogs --gate all --profile clean
 | H03-BUDGET | Перевищення бюджету діалогу H03 | 1 | 63000 | 30000 | release / 5 |
 | H04-BUDGET | Перевищення бюджету діалогу H04 | 1 | 40000 | 22500 | release / 5 |
 | H05-BUDGET | Перевищення бюджету довгого діалогу; покриття D15 | 1 | 95000 | 53750 | release / 5 |
-| D14-EMPTY-RESULT | Повторні однакові виклики після порожнього результату; D14 | 1 | 9000 | 6250 | release / 5 |
+| D14-EMPTY-RESULT | Повторні однакові виклики після порожнього результату; D14 | 1 | 11000 | 6250 | daily / 1 |
 
 ### Прогони
 
 | Що | Профіль / модель | Звіт |
 | --- | --- | --- |
-| Набір `l05_dialogs` | clean | `reports/l05_dialogs-clean-20261122T170202.json` |
-| Набір `l05_dialogs` | lesson-08 | `reports/l05_dialogs-lesson-08-20261122T183221.json` |
+| Набір `l05_dialogs` | clean | `reports/l05_dialogs-clean-20261123T113714.json` |
+| Набір `l05_dialogs` | lesson-08 | `reports/l05_dialogs-lesson-08-20261123T110950.json` |
 | B4 | Haiku 5.5, Gemini 2.5 Flash | `l08/b4.json` |
