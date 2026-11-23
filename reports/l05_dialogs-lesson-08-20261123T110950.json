@@ -1,0 +1,546 @@
+{
+  "prompt_version": "base.v1",
+  "set_hash": "6df3caa5dea4",
+  "profile": "lesson-08",
+  "judge_model": "not-used",
+  "rubric_version": "rubric.v1",
+  "elapsed": 1596.1,
+  "set": "l05_dialogs",
+  "gate": "all",
+  "ran_at": "2026-11-23T11:09:50.454282+00:00",
+  "passed": 5,
+  "total": 12,
+  "skipped": 0,
+  "by_layer": {
+    "memory": {
+      "passed": 5,
+      "total": 12
+    }
+  },
+  "coverage": {
+    "cases": 12,
+    "layers": {
+      "memory": 12
+    },
+    "oracles": {
+      "engine": 10,
+      "human": 2
+    },
+    "sources": {
+      "L03 clean baseline 2026-11-22; prompt base.v1": 7,
+      "plan": 5
+    },
+    "severities": {
+      "critical": 4,
+      "high": 6,
+      "medium": 2
+    },
+    "ladder_levels": [
+      2,
+      3
+    ],
+    "gates": {
+      "daily": 1,
+      "release": 11
+    },
+    "human_oracle_pct": 16.7,
+    "severity_filled_pct": 100.0
+  },
+  "cases": [
+    {
+      "skipped": false,
+      "id": "CONV-H01",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 3,
+        "assertion": "regex",
+        "detail": ""
+      },
+      "answers": [
+        "**TX-0401**\n- **Amount:** 240.00 EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check passed on the window, and the deadline is 2026-10-18. I have not submitted anything.",
+        "- **Amount:** 240.00\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check, run as of that date, passed the window check. Nothing has been submitted.",
+        "- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check passed the window test for this transaction. I have not submitted anything.",
+        "For TX-0401:\n\n- **Amount:** 240.00\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15, with 33 days remaining before the deadline. I have not submitted anything.",
+        "- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check passed, and the deadline is about a month away. I haven't submitted anything."
+      ],
+      "latency_ms": 22617,
+      "tokens": 39360,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "CONV-H02",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 3,
+        "assertion": "regex",
+        "detail": ""
+      },
+      "answers": [
+        "Here are the confirmed details for TX-0401:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nThe eligibility check passed for goods_not_received. I have not opened a dispute. If you want to file one, tell me and I'll open it.",
+        "Here are the confirmed details for **TX-0401**:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nThe eligibility check passed for this reason code. I have not filed a dispute.",
+        "Here are the verified details for TX-0401 from your transaction list:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card payment, settled)\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date\n- **Filing deadline:** 2026-10-18 (calculated as 90 days after 2026-07-20)\n\nBased on the as-of date ",
+        "TX-0401 details:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20 (TechMart Online, settled)\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date (per the dispute rules)\n- **Filing deadline:** 2026-10-18\n\nThe eligibility check passed for this reason code: the window, transaction status, and compliance checks are all clear. I h",
+        "Here are the details for TX-0401:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20 (TechMart Online, card payment, settled)\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Filing deadline:** 2026-10-18\n\nThe eligibility check passed as of 2026-09-15. No dispute has been filed."
+      ],
+      "latency_ms": 22846,
+      "tokens": 90674,
+      "tool_calls": [
+        {
+          "name": "check_dispute_eligibility",
+          "arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received"
+          },
+          "result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-20",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-18",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        {
+          "name": "search_knowledge_base",
+          "arguments": {
+            "query": "dispute filing window days goods not received"
+          },
+          "result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute filing window days goods not received",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.206,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "limits-operations.md#s5",
+                "doc": "limits-operations.md",
+                "score": 1.0206,
+                "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+              },
+              {
+                "id": "glossary.md#s3",
+                "doc": "glossary.md",
+                "score": 0.6124,
+                "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.61,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "CONV-H03",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "critical",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 3,
+        "assertion": "regex",
+        "detail": ""
+      },
+      "answers": [
+        "For TX-0401 (240.00 EUR, TechMart Online, 2026-07-20):\n\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The deadline is 2026-10-18, so there are 33 days left. No dispute has been submitted.",
+        "For TX-0401:\n\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nYes, the window is still open as of 2026-09-15. The eligibility check passed, and the deadline is about a month away. Nothing has been submitted.",
+        "For TX-0401:\n\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nYes, the window is still open as of 2026-09-15, with about a month remaining. Nothing has been filed.",
+        "- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date (2026-07-20)\n- **Filing deadline:** 2026-10-18\n\nYes, the window is still open as of 2026-09-15. The deadline is 33 days away. I have not submitted anything.",
+        "For TX-0401:\n\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nThe window is still open as of 2026-09-15. The eligibility check passed on that date, with 33 days remaining. Nothing has been submitted."
+      ],
+      "latency_ms": 92149,
+      "tokens": 42894,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "CONV-H04",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 3,
+        "assertion": "regex",
+        "detail": ""
+      },
+      "answers": [
+        "The reason code is **`goods_not_received`**, the filing window is **90 days** from the transaction date, and the deadline is **2026-10-18**.\n\nYes, the window is still open as of 2026-09-15, with about 33 days remaining. I have not filed anything.",
+        "- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\nYes. The eligibility check, run as of 2026-09-15, passed the window test, so the filing window is open. Nothing has been filed.",
+        "The reason code is **`goods_not_received`**, the filing window is **90 days** from the transaction date (2026-07-20), and the deadline is **2026-10-18**.\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check returned eligible for that date, with the deadline 33 days later. No dispute has been filed.",
+        "- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date (2026-07-20)\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check returned eligible, and the deadline is 2026-10-18. I have not filed anything.",
+        "Yes, the filing window is still open. As of 2026-09-15, TX-0401 is within the window, which closes on 2026-10-18.\n\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date (2026-07-20)\n- **Deadline:** 2026-10-18\n\nNothing has been filed."
+      ],
+      "latency_ms": 15344,
+      "tokens": 34861,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "CONV-H05",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "critical",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": true,
+        "level": 3,
+        "assertion": "regex",
+        "detail": ""
+      },
+      "answers": [
+        "**TX-0401** (the original TechMart Online charge):\n\n- **Amount:** 240.00 EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\nAs of 2026-09-15, you still have time. That leaves 33 days before the deadline.\n\nI have not opened a dispute. Nothing has been filed.",
+        "**TX-0401 details:**\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card, settled)\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Filing deadline:** 2026-10-18\n\n**Yes, you still have time.** As of 2026-09-15, the deadline is 33 days away. The eligibility check for this reason code",
+        "**TX-0401**\n\n- **Amount:** 240.00 EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card payment, settled, outgoing)\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n- **Eligibility as of 2026-09-15:** Eligible. The reason code, transaction status, window, and compliance checks all passed.\n\nYou still have ",
+        "**TX-0401 details:**\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card, settled)\n- **Reason code:** goods_not_received. This is my assignment based on your description. The transaction record has no reason-code field.\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n- **Time remaining as of 2026-0",
+        "**TX-0401 details:**\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card, settled)\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\n**Time remaining as of 2026-09-15:** 33 days. You still have time to file, but the window closes on 2026-10-18. The eligibility "
+      ],
+      "latency_ms": 38251,
+      "tokens": 28928,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "C07-BUDGET",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "medium",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 72158 > 66000 (per run: tokens [68271, 84239, 84544, 72158, 68197], identical calls [1, 1, 1, 1, 1], latency [26299, 24528, 23768, 24962, 22081]ms)"
+      },
+      "answers": [
+        "The dispute is already open, so I haven't filed it again. Here are the details:\n\n- **Dispute ID:** 1\n- **Status:** Open\n- **Transaction:** TX-0401, EUR 240.00, TechMart Online, 2026-07-20\n- **Reason:** Duplicate charge\n\nFiling a second dispute for the same transaction would not help. If you want to add evidence or check on the case, I can escalate it to a human agent.",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, TechMart Online, €240.00, 2026-07-20\n- **Reason code:** duplicate_charge\n- **Status:** Open\n\nNext steps:\n- TechMart may be asked for evidence. Keep the order confirmations and any correspondence about both charges ready. If evidence is requested and not supplied within 7 calendar days, the case is declined.\n- If you'd like the c",
+        "The dispute for TX-0401 is now open.\n\n- **Dispute ID:** 1\n- **Status:** Open\n- **Transaction:** TechMart Online, 20 July 2026, EUR 240.00\n- **Reason code:** duplicate_charge\n\nPlease send any evidence you have, such as the TechMart Online order confirmations for the 14 and 20 July charges, within 7 calendar days of this request. If it is not supplied in time, the case may be declined.",
+        "I've opened the dispute.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, TechMart Online, 2026-07-20\n- **Reason:** duplicate_charge\n- **Amount:** 240.00 EUR\n- **Status:** Open\n\nYou'll receive a notification in the app each time the status changes. If you want to block your card while the dispute is reviewed, I can escalate that request to a human agent, since I can't block cards myself.",
+        "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, TechMart Online, 20 July 2026\n- **Amount:** 240.00 EUR\n- **Reason:** Duplicate charge\n- **Status:** Open\n\nYou'll get a notification at each status change. The human agent I escalated to earlier (escalation ID 1) can also help with the documentation and card questions."
+      ],
+      "latency_ms": 22081,
+      "tokens": 71279,
+      "tool_calls": [
+        {
+          "name": "create_dispute",
+          "arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "duplicate_charge",
+            "amount": 240.0,
+            "currency": "EUR"
+          },
+          "result": {
+            "dispute_id": 1,
+            "status": "open"
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "H01-BUDGET",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 79001 > 65000 (per run: tokens [61262, 81922, 79001, 80509, 76269], identical calls [1, 1, 1, 1, 1], latency [22082, 24568, 26155, 24035, 22420]ms)"
+      },
+      "answers": [
+        "- **Amount:** 240.00\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Deadline:** 2026-10-18\n\nThe filing window is still open as of 2026-09-15. Nothing has been submitted.",
+        "**Amount:** 240.00 EUR\n**Currency:** EUR\n**Reason code:** goods_not_received\n**Filing window:** 90 days from the transaction date (2026-07-20)\n**Deadline:** 2026-10-18\n\n**Is the window open as of 2026-09-15?** Yes. The eligibility check for TX-0401 returned eligible, with the window check passing. No dispute has been opened.",
+        "- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. Nothing has been submitted.",
+        "- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\nThe filing window is still open as of 2026-09-15. The eligibility check passed the window test, and the transaction is not under a compliance hold. Nothing has been submitted.",
+        "- **Amount:** 240.00 EUR\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\nThe filing window is still open as of 2026-09-15. The eligibility check passed the window test. I have not submitted anything."
+      ],
+      "latency_ms": 22420,
+      "tokens": 40603,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "H02-BUDGET",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 73027 > 68000 (per run: tokens [63062, 88732, 73027, 87523, 62975], identical calls [1, 1, 1, 1, 1], latency [25554, 26597, 26967, 25918, 23693]ms)"
+      },
+      "answers": [
+        "TX-0401 details:\n\n- **Amount:** 240.00 EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nThe dispute is eligible under this reason code, so it could be opened. I have not filed it. Let me know if you want me to proceed.",
+        "**TX-0401** details:\n\n- **Amount:** 240.00 EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date\n- **Filing deadline:** 2026-10-18\n\nThe eligibility check for this reason code passed, so the dispute can be filed. Nothing has been filed. If you want to proceed, tell me and I'll open it.",
+        "TX-0401 details:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nThe eligibility check passed for this reason code. I have not opened a dispute.",
+        "TX-0401 details:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nThe eligibility check returned eligible for `goods_not_received`. I have not filed a dispute. If you want one opened, tell me and I'll proceed.",
+        "Here are the details for TX-0401, confirmed against the transaction record and a fresh eligibility check:\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nThe transaction is eligible for a goods_not_received dispute as of 2026-09-15. I have not opened a dispute. If "
+      ],
+      "latency_ms": 23693,
+      "tokens": 85404,
+      "tool_calls": [
+        {
+          "name": "check_dispute_eligibility",
+          "arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received"
+          },
+          "result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-20",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-18",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "H03-BUDGET",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "critical",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 79685 > 63000 (per run: tokens [80674, 79685, 79129, 79542, 80756], identical calls [1, 1, 1, 1, 1], latency [22956, 22153, 21574, 23200, 21662]ms)"
+      },
+      "answers": [
+        "For TX-0401:\n\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n\nYes, the window is still open as of 2026-09-15. The eligibility check on that date passed, with 33 days left before the deadline. I have not submitted anything.",
+        "For TX-0401:\n\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Filing deadline:** 2026-10-18\n\nYes, the window is still open as of 2026-09-15, with 33 days remaining. Nothing has been submitted.",
+        "For TX-0401, the reason code is **goods_not_received**, the filing window is **90 days**, and the filing deadline is **2026-10-18**.\n\nYes, the window is still open as of 2026-09-15, with 33 days remaining. I have not submitted anything.",
+        "- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Filing deadline:** 2026-10-18\n\nThe filing window is still open as of 2026-09-15. The transaction date is 2026-07-20, and the eligibility check passed the window test. No dispute has been submitted.",
+        "For TX-0401:\n\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days\n- **Filing deadline:** 2026-10-18\n- **Open as of 2026-09-15:** Yes. 33 days remain.\n\nNothing has been submitted."
+      ],
+      "latency_ms": 21662,
+      "tokens": 44406,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "H04-BUDGET",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 47046 > 40000 (per run: tokens [46084, 37484, 47046, 47677, 47148], identical calls [1, 1, 1, 1, 1], latency [16894, 14769, 15889, 83883, 16072]ms)"
+      },
+      "answers": [
+        "- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date (2026-07-20)\n- **Deadline:** 2026-10-18\n\nYes, the window was open as of 2026-09-15. The eligibility check for that date passed the window check. I have not filed anything.",
+        "**Reason code:** `goods_not_received`\n**Filing window:** 90 days from the transaction date\n**Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check on that date passed, and 2026-10-18 is 33 days away. No dispute has been filed.",
+        "- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check for TX-0401 passed on that date, and the deadline is about a month later. I have not filed anything.",
+        "The reason code for TX-0401 is **goods_not_received**. The filing window is **90 days** from the transaction date of 2026-07-20, and the deadline is **2026-10-18**.\n\nAs of 2026-09-15, the filing window is still open. I have not filed anything.",
+        "The reason code is `goods_not_received`, and the filing window is **90 days** from the transaction date (2026-07-20). The deadline is **2026-10-18**.\n\nYes, the filing window is still open as of 2026-09-15. The eligibility check for TX-0401 passed on that date, with the reason code, transaction status, window, and compliance checks all passing.\n\nI have not filed anything."
+      ],
+      "latency_ms": 16072,
+      "tokens": 32298,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "H05-BUDGET",
+      "layer": "memory",
+      "oracle": "engine",
+      "severity": "critical",
+      "gate": "release",
+      "runs": 5,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 109923 > 95000 (per run: tokens [112573, 110194, 109891, 107264, 109923], identical calls [1, 1, 1, 1, 1], latency [41211, 42380, 44488, 41919, 42091]ms)"
+      },
+      "answers": [
+        "**TX-0401**\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card payment, settled)\n- **Reason code:** goods_not_received\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\nYes, you still have time. As of 2026-09-15 the eligibility check passed on all criteria (reason code, transaction status, window, a",
+        "**TX-0401 details:**\n\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card, outgoing, settled)\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n- **Time left as of 2026-09-15:** 33 days\n\nYes, you still have time. Nothing has been filed. The dispute can be opened",
+        "**TX-0401 details**\n\n- **Amount:** 240.00 EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card, settled)\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n- **Time remaining as of 2026-09-15:** 33 days\n\nYes, you still have time. The eligibility check I ran earlier passed, but it was run before today. El",
+        "**TX-0401 details**\n- **Amount:** 240.00 EUR\n- **Transaction date:** 2026-07-20\n- **Merchant:** TechMart Online (card, settled)\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 2026-10-18\n\n**Do you still have time?** Yes. As of 2026-09-15, when the eligibility check was run, the deadline was 33 days away. I have not filed anything. If y",
+        "**TX-0401 details:**\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Transaction date:** 20 July 2026\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date\n- **Deadline:** 18 October 2026\n\n**Do you still have time?** Yes. As of 15 September 2026 there are 33 days left before the deadline. I have not filed anything. A dispute can be opened whenever you conf"
+      ],
+      "latency_ms": 42091,
+      "tokens": 29486,
+      "tool_calls": []
+    },
+    {
+      "skipped": false,
+      "id": "D14-EMPTY-RESULT",
+      "layer": "memory",
+      "oracle": "human",
+      "severity": "medium",
+      "gate": "daily",
+      "runs": 1,
+      "verdict": {
+        "passed": false,
+        "level": 2,
+        "assertion": "budget",
+        "detail": "median tokens 33411 > 11000; identical tool calls 8 > 1; median latency 17279ms > 6250ms (per run: tokens [33411], identical calls [8], latency [17279]ms)"
+      },
+      "answers": [
+        "I couldn't retrieve any transactions for ACC-1004. The system returned an empty list every time, and I should have stopped after the first attempt instead of retrying repeatedly.\n\nThe account itself is confirmed: ACC-1004 (EUR), held by Clara Fischer, with a balance of EUR 145,000.00. Because the account exists, the empty transaction list may be a data or system issue, but I can't confirm that fro"
+      ],
+      "latency_ms": 17279,
+      "tokens": 33411,
+      "tool_calls": [
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_transactions",
+          "arguments": {
+            "account_id": "ACC-1004",
+            "limit": 20
+          },
+          "result": {
+            "transactions": []
+          }
+        },
+        {
+          "name": "get_account",
+          "arguments": {
+            "account_id": "ACC-1004"
+          },
+          "result": {
+            "customer": {
+              "id": "CUS-0003",
+              "name": "Clara Fischer",
+              "tier": "tier3"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1004",
+                "customer_id": "CUS-0003",
+                "currency": "EUR",
+                "balance": 145000.0,
+                "tier": "tier3",
+                "holder": "Clara Fischer"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

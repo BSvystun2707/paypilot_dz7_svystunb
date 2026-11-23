@@ -1,4 +1,4 @@
-# Observability & Cost Report · <система>
+# Observability & Cost Report 
 
 Система: PayPilot (paypilot-l08-eval)
 
@@ -32,18 +32,20 @@ B2 defect: Gemini — $0.006942; Haiku — $0.006312.
 
 ## Слайд 1 · Трейс проти лічильника
 
-**Сесія в інтерфейсі трейсів:** 
-Поле	Значення
-ID	0a11055487b9
-Дата	22.11.2026, 13:25:38
-Профіль	lesson-08
-Користувач	CUS-0004
-Кількість кроків	7
-Total Cost	$0.006621
-Input tokens	81 272
-Output tokens	2 870
-Разом	84 142
-Тривалість	23.00 с
+**Сесія в інтерфейсі трейсів:**
+
+| Поле | Значення |
+|---|---|
+| ID | 0a11055487b9 |
+| Дата | 22.11.2026, 13:25:38 |
+| Профіль | lesson-08 |
+| Користувач | CUS-0004 |
+| Кількість кроків | 7 |
+| Total Cost | $0.006621 |
+| Input tokens | 81 272 |
+| Output tokens | 2 870 |
+| Разом | 84 142 |
+| Тривалість | 23.00 с |
 
 Цей запис відповідає потрібному формату: сім кроків в одній сесії та колонка Total Cost.
 
@@ -187,18 +189,27 @@ C_{\text{Haiku}}(N)=N\times10\times0.00138630
 
 **Бюджети в кейсах:**
 
-| Файл | ID кейсу | Перевірка | Поріг | Gate |
-|---|---|---|---|---|
-| `sets/l05_dialogs.jsonl` | C07-BUDGET | Загальний бюджет діалогу | `tokens_total` ≤ 68 000; `latency_ms` ≤ 35 000 | release, 5 прогонів |
-| `sets/l05_dialogs.jsonl` | CONV-H01–CONV-H05 | Перевірки відповіді через regex | Не є бюджетними перевірками | Перевірки сценаріїв |
-| B4, перевірка B2 | B2 clean / defect | Input-token budget | Медіана не більше 6 500 | Порівняльна перевірка моделей |
+| Файл | ID кейсу | Перевірка | Поріг tokens_total | Clean baseline: tokens | Поріг latency_ms | Clean baseline: latency | identical_tool_calls_max | Gate |
+|---|---|---|---:|---:|---:|---:|---:|---|
+| sets/l05_dialogs.jsonl | C07-BUDGET | Загальний бюджет діалогу | ≤ 66 000 | 65 163 | ≤ 28 750 | 26 657 ms | 1 | release, 5 прогонів |
+| sets/l05_dialogs.jsonl | H01-BUDGET | Загальний бюджет діалогу | ≤ 65 000 | 58 073 | ≤ 31 250 | 25 039 ms | 1 | release, 5 прогонів |
+| sets/l05_dialogs.jsonl | H02-BUDGET | Загальний бюджет діалогу | ≤ 68 000 | 67 395 | ≤ 33 750 | 28 099 ms | 1 | release, 5 прогонів |
+| sets/l05_dialogs.jsonl | H03-BUDGET | Загальний бюджет діалогу | ≤ 63 000 | 62 240 | ≤ 30 000 | 22 744 ms | 1 | release, 5 прогонів |
+| sets/l05_dialogs.jsonl | H04-BUDGET | Загальний бюджет діалогу | ≤ 40 000 | 39 116 | ≤ 22 500 | 19 192 ms | 1 | release, 5 прогонів |
+| sets/l05_dialogs.jsonl | H05-BUDGET | Загальний бюджет діалогу | ≤ 95 000 | 89 056 | ≤ 53 750 | 45 344 ms | 1 | release, 5 прогонів |
+| sets/l05_dialogs.jsonl | D14-EMPTY-RESULT | Загальний бюджет діалогу | ≤ 11 000 | 5 934* | ≤ 6 250 | 4 010 ms* | 1 | daily, 1 прогін |
+
+Пояснення до таблиці:
+- Clean baseline — медіана п'яти прогонів профілю clean для кожного кейсу.
+- Пороги tokens_total і latency_ms встановлено з урахуванням відповідних clean baseline, щоб контролювати відхилення в бюджеті та затримці.
+- Для D14-EMPTY-RESULT використано runs: 1, тому значення 5 934 токени та 4 010 ms є одиничними вимірами, а не медіанами.
 
 
 Файл: ~/paypilot/l03/sets/l05_dialogs.jsonl
 
-Release: C07-BUDGET, H01-BUDGET, H02-BUDGET, H03-BUDGET, H04-BUDGET, H05-BUDGET, D14-EMPTY-RESULT.
+Release: C07-BUDGET, H01-BUDGET, H02-BUDGET, H03-BUDGET, H04-BUDGET, H05-BUDGET.
 
-Daily: немає.
+Daily: D14-EMPTY-RESULT.
 
 Покриття дефектів:
 
